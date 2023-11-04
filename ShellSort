@@ -1,0 +1,58 @@
+import java.util.Arrays;
+import java.util.Random;
+
+public class ShellSort {
+    public static void shellSort(int[] array, int[] incrementos) {
+        int tamanhoIncrementos = tamArray(incrementos);
+        int trocas = 0;
+        int iteracoes = 0;
+
+        for (int incr = 0; incr < tamanhoIncrementos; incr++) {
+            int span = incrementos[incr];
+            for (int j = span; j < tamArray(array); j++) {
+                int y = array[j];
+                int k;
+                for (k = j - span; k >= 0 && y < array[k]; k -= span) {
+                    array[k + span] = array[k];
+                    trocas++;
+                }
+                array[k + span] = y;
+                iteracoes++;
+            }
+        }
+
+        System.out.println("Número de trocas: " + trocas);
+        System.out.println("Número de iterações: " + iteracoes);
+    }
+
+    public static int tamArray(int[] array) {
+        int tamanho = 0;
+        for (int elemento : array) {
+            tamanho++;
+        }
+        return tamanho;
+    }
+
+    public static void main(String[] args) {
+        int tamanho = 50;
+        int[] array = new int[tamanho];
+        int[] incrementos = { 5, 3, 1 };
+
+        Random rand = new Random();
+
+        for (int i = 0; i < tamanho; i++) {
+            array[i] = rand.nextInt(100);
+        }
+
+        System.out.println("Array não ordenado:");
+        System.out.println(Arrays.toString(array));
+
+        long startTime = System.currentTimeMillis();
+        shellSort(array, incrementos);
+        long endTime = System.currentTimeMillis();
+
+        System.out.println("Array ordenado:");
+        System.out.println(Arrays.toString(array));
+        System.out.println("Tempo (ms): " + (endTime - startTime));
+    }
+}
