@@ -1,0 +1,475 @@
+
+
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+
+\usepackage{graphicx,url}
+
+%\usepackage[brazil]{babel}   
+\usepackage[utf8]{inputenc}  
+
+     
+\sloppy
+
+\title{Ordenação}
+
+\author{Maria Julia Prado Lazaroto}
+
+
+\address{PUCPR}
+
+\begin{document} 
+
+\maketitle
+
+\begin{resumo}
+  Hoje, exploraremos algoritmos de ordenação, como o bubblesort, mergesort e shellsort, compreendendo seu funcionamento e determinando qual deles se adapta melhor a cada situação. Analisaremos suas características, eficiência e aplicações específicas, aprofundando nosso conhecimento sobre essas técnicas de classificação.
+\end{resumo}
+
+
+\section{BubbleSort}
+
+O bubblesort é um algoritmo de ordenação simples que percorre uma lista de elementos várias vezes, comparando pares adjacentes e trocando-os se estiverem fora de ordem. À medida que as iterações ocorrem, os elementos desordenados gradualmente se movem para suas posições corretas. Embora seja fácil de entender e implementar, o bubblesort é menos eficiente em comparação com outros algoritmos de ordenação, especialmente quando lidamos com conjuntos de dados grandes. Então, podemos concluir que ele é mais apropriado para listas menores.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|}
+\hline
+\multicolumn{1}{|c|}{Bubble Sort} \\
+\hline
+\begin{tabular}{|c|c|c|c|}
+\hline
+Tempo & Número de Trocas & Iterações & Quantidade de Elementos \\
+\hline
+0.0 & 476 & 2450 & 50 \\
+\hline
+0.0 & 622 & 2450 & 50 \\
+\hline
+0.0 & 656 & 2450 & 50 \\
+\hline
+0.0 & 641 & 2450 & 50 \\
+\hline
+0.0 & 574 & 2450 & 50 \\
+\hline
+\multicolumn{4}{|c|}{Média} \\
+\hline
+0.0 & 593 & 2450 & 50 \\
+\hline
+\end{tabular}
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|}
+\hline
+\multicolumn{1}{|c|}{Bubble Sort} \\
+\hline
+\begin{tabular}{|c|c|c|c|}
+\hline
+Tempo & Número de Trocas & Iterações & Quantidade de Elementos \\
+\hline
+2 & 61369 & 249500 & 500 \\
+\hline
+2 & 60442 & 249500 & 500 \\
+\hline
+2 & 61293 & 249500 & 500 \\
+\hline
+2 & 60738 & 249500 & 500 \\
+\hline
+2 & 63554 & 249500 & 500 \\
+\hline
+\multicolumn{4}{|c|}{Média} \\
+\hline
+2 & 61479 & 249500 & 500 \\
+\hline
+\end{tabular}
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|}
+\hline
+\multicolumn{1}{|c|}{Bubble Sort} \\
+\hline
+\begin{tabular}{|c|c|c|c|}
+\hline
+Tempo & Número de Trocas & Iterações & Quantidade de Elementos \\
+\hline
+5 & 250441 & 999000 & 1000 \\
+\hline
+5 & 248491 & 999000 & 1000 \\
+\hline
+5 & 250852 & 999000 & 1000 \\
+\hline
+5 & 238113 & 999000 & 1000 \\
+\hline
+5 & 249962 & 999000 & 1000 \\
+\hline
+\multicolumn{4}{|c|}{Média} \\
+\hline
+5 & 247571 & 999000 & 1000 \\
+\hline
+\end{tabular}
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|}
+\hline
+\multicolumn{1}{|c|}{Bubble Sort} \\
+\hline
+\begin{tabular}{|c|c|c|c|}
+\hline
+Tempo & Número de Trocas & Iterações & Quantidade de Elementos \\
+\hline
+27 & 6111950 & 24995000 & 5000 \\
+\hline
+27 & 6154091 & 24995000 & 5000 \\
+\hline
+27 & 6204304 & 24995000 & 5000 \\
+\hline
+27 & 6236255 & 24995000 & 5000 \\
+\hline
+27 & 6112106 & 24995000 & 5000 \\
+\hline
+\multicolumn{4}{|c|}{Média} \\
+\hline
+27 & 6163741 & 24995000 & 5000 \\
+\hline
+\end{tabular}
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|}
+\hline
+\multicolumn{1}{|c|}{Bubble Sort} \\
+\hline
+\begin{tabular}{|c|c|c|c|}
+\hline
+Tempo & Número de Trocas & Iterações & Quantidade de Elementos \\
+\hline
+114 & 24873580 & 99990000 & 10000 \\
+\hline
+114 & 24798885 & 99990000 & 10000 \\
+\hline
+114 & 24403396 & 99990000 & 10000 \\
+\hline
+114 & 24700050 & 99990000 & 10000 \\
+\hline
+114 & 24692554 & 99990000 & 10000 \\
+\hline
+\multicolumn{4}{|c|}{Média} \\
+\hline
+114 & 24693693 & 99990000 & 5000 \\
+\hline
+\end{tabular}
+\end{tabular}
+\end{table}
+
+
+\newpage\section{MergeSort}
+
+O processo do MergeSort ocorre em 2 passos importantes, a divisão e intercalação. Na divisão, o vetor é dividido ao meio, e este processo é repetido recursivamente até ficarem os números individuais em cada um. Após a divisão, o mesmo começa a mesclar os itens, para criar sublistas maiores ordenadas, assim, este processo vai acontecendo até tudo ficar ordenado em uma só lista. O Mergesort sempre funciona bem, não importa se a lista está toda bagunçada ou já meio ordenada. Ele também mantém a ordem dos números iguais, então é um jeito "estável" de ordenar.
+A única desvantagem é que o Mergesort precisa de um pouco de espaço extra na memória para funcionar, o que pode ser um problema se você estiver ordenando uma lista consideravelmente grande. Mas, no geral, o Mergesort é um algoritmo de ordenação eficiente e estável que é adequado para a maioria das situações, especialmente quando a estabilidade da ordem é importante.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|}
+\hline
+\multicolumn{1}{|c|}{Merge Sort} \\
+\hline
+\begin{tabular}{|c|c|c|c|}
+\hline
+Tempo & Número de Trocas & Iterações & Quantidade de Elementos \\
+\hline
+0 & 64 & 222 & 50 \\
+\hline
+0 & 67 & 226 & 50 \\
+\hline
+0 & 65 & 221 & 50 \\
+\hline
+0 & 66 & 223 & 50 \\
+\hline
+0 & 69 & 231 & 50 \\
+\hline
+\multicolumn{4}{|c|}{Média} \\
+\hline
+0 & 331 & 224 & 50 \\
+\hline
+\end{tabular}
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|}
+\hline
+\multicolumn{1}{|c|}{Merge Sort} \\
+\hline
+\begin{tabular}{|c|c|c|c|}
+\hline
+Tempo & Número de Trocas & Iterações & Quantidade de Elementos \\
+\hline
+1 & 647 & 3841 & 500 \\
+\hline
+1 & 648 & 3840 & 500 \\
+\hline
+1 & 634 & 3854 & 500 \\
+\hline
+1 & 649 & 3839 & 500 \\
+\hline
+1 & 612 & 3876 & 500 \\
+\hline
+\multicolumn{4}{|c|}{Média} \\
+\hline
+1 & 638 & 3850 & 500 \\
+\hline
+\end{tabular}
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|}
+\hline
+\multicolumn{1}{|c|}{Merge Sort} \\
+\hline
+\begin{tabular}{|c|c|c|c|}
+\hline
+Tempo & Número de Trocas & Iterações & Quantidade de Elementos \\
+\hline
+2 & 1291 & 8685 & 1000 \\
+\hline
+2 & 1262 & 8714 & 1000 \\
+\hline
+2 & 1269 & 8707 & 1000 \\
+\hline
+2 & 1299 & 8677 & 1000 \\
+\hline
+2 & 1306 & 8670 & 1000 \\
+\hline
+\multicolumn{4}{|c|}{Média} \\
+\hline
+2 & 1285 & 8690 & 1000 \\
+\hline
+\end{tabular}
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|}
+\hline
+\multicolumn{1}{|c|}{Merge Sort} \\
+\hline
+\begin{tabular}{|c|c|c|c|}
+\hline
+Tempo & Número de Trocas & Iterações & Quantidade de Elementos \\
+\hline
+6 & 6700 & 55108 & 5000 \\
+\hline
+6 & 6661 & 55147 & 5000 \\
+\hline
+6 & 6663 & 55145 & 5000 \\
+\hline
+6 & 6685 & 55123 & 5000 \\
+\hline
+6 & 6650 & 55158 & 5000 \\
+\hline
+\multicolumn{4}{|c|}{Média} \\
+\hline
+6 & 6671 & 55136 & 5000 \\
+\hline
+\end{tabular}
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|}
+\hline
+\multicolumn{1}{|c|}{Merge Sort} \\
+\hline
+\begin{tabular}{|c|c|c|c|}
+\hline
+Tempo & Número de Trocas & Iterações & Quantidade de Elementos \\
+\hline
+13 & 13268 & 120348 & 10000 \\
+\hline
+13 & 13367 & 120249 & 10000 \\
+\hline
+13 & 13289 & 120327 & 10000 \\
+\hline
+13 & 13342 & 120274 & 10000 \\
+\hline
+13 & 13369 & 120247 & 10000 \\
+\hline
+\multicolumn{4}{|c|}{Média} \\
+\hline
+13 & 13327 & 120289 & 10000 \\
+\hline
+\end{tabular}
+\end{tabular}
+\end{table}
+
+
+
+
+\newpage
+\mbox{~}
+\newpage\section{ShellSort}
+
+Primeiro, escolhemos um número que vai determinar o tamanho dos pedaços. Em seguida, dividimos a lista em pedaços usando esse número e organizamos cada pedaço separadamente usando o método de inserção. Depois, reduzimos o número, e fazemos tudo de novo. Os pedaços ficam menores, então a organização fica mais fácil. O algoritmo continua a reduzir o tamanho do intervalo e a ordenar as sublistas até que o intervalo se torne 1. Quando o intervalo é igual a 1, o Shell Sort funciona como um algoritmo de inserção padrão. O Shell Sort é uma ótima opção para organizar arrays desordenados, especialmente quando o mesmo é grande. É mais rápido do que o método de inserção puro. No entanto, escolher os tamanhos dos pedaços certos é importante para obter o melhor desempenho.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|}
+\hline
+\multicolumn{1}{|c|}{Shell Sort} \\
+\hline
+\begin{tabular}{|c|c|c|c|}
+\hline
+Tempo & Número de Trocas & Iterações & Quantidade de Elementos \\
+\hline
+0 & 193 & 193 & 50 \\
+\hline
+0 & 170 & 170 & 50 \\
+\hline
+0 & 174 & 174 & 50 \\
+\hline
+0 & 173 & 173 & 50 \\
+\hline
+0 & 179 & 179 & 50 \\
+\hline
+\multicolumn{4}{|c|}{Média} \\
+\hline
+0 & 177 & 177 & 50 \\
+\hline
+\end{tabular}
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|}
+\hline
+\multicolumn{1}{|c|}{Shell Sort} \\
+\hline
+\begin{tabular}{|c|c|c|c|}
+\hline
+Tempo & Número de Trocas & Iterações & Quantidade de Elementos \\
+\hline
+0 & 13148 & 13148 & 500 \\
+\hline
+0 & 13556 & 13556 & 500 \\
+\hline
+0 & 13773 & 13773 & 500 \\
+\hline
+0 & 14240 & 14240 & 500 \\
+\hline
+0 & 13601 & 13601 & 500 \\
+\hline
+\multicolumn{4}{|c|}{Média} \\
+\hline
+0 & 13663 & 13663 & 500 \\
+\hline
+\end{tabular}
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|}
+\hline
+\multicolumn{1}{|c|}{Shell Sort} \\
+\hline
+\begin{tabular}{|c|c|c|c|}
+\hline
+Tempo & Número de Trocas & Iterações & Quantidade de Elementos \\
+\hline
+1 & 51886 & 51886 & 1000 \\
+\hline
+1 & 55952 & 55952 & 1000 \\
+\hline
+1 & 53254 & 53254 & 1000 \\
+\hline
+1 & 50806 & 50806 & 1000 \\
+\hline
+1 & 52047 & 52047 & 1000 \\
+\hline
+\multicolumn{4}{|c|}{Média} \\
+\hline
+1 & 52789 & 52789 & 1000 \\
+\hline
+\end{tabular}
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|}
+\hline
+\multicolumn{1}{|c|}{Shell Sort} \\
+\hline
+\begin{tabular}{|c|c|c|c|}
+\hline
+Tempo & Número de Trocas & Iterações & Quantidade de Elementos \\
+\hline
+1 & 1267284 & 1267284 & 5000 \\
+\hline
+1 & 1265174 & 1265174 & 5000 \\
+\hline
+1 & 1269777 & 1269777 & 5000 \\
+\hline
+1 & 1304867 & 1304867 & 5000 \\
+\hline
+1 & 1274218 & 1274218 & 5000 \\
+\hline
+\multicolumn{4}{|c|}{Média} \\
+\hline
+1 & 1276264 & 1276264 & 5000 \\
+\hline
+\end{tabular}
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|}
+\hline
+\multicolumn{1}{|c|}{Shell Sort} \\
+\hline
+\begin{tabular}{|c|c|c|c|}
+\hline
+Tempo & Número de Trocas & Iterações & Quantidade de Elementos \\
+\hline
+1 & 5026007 & 5026007 & 10000 \\
+\hline
+1 & 5035487 & 5035487 & 10000 \\
+\hline
+1 & 5030121 & 5030121 & 10000 \\
+\hline
+1 & 5056916 & 5056916 & 10000 \\
+\hline
+1 & 5023990 & 5023990 & 10000 \\
+\hline
+\multicolumn{4}{|c|}{Média} \\
+\hline
+1 & 5034504 & 5034504 & 10000 \\
+\hline
+\end{tabular}
+\end{tabular}
+\end{table}
+
+\newpage
+\mbox{~}
+\newpage\section{Conclusão}
+
+A escolha entre esses algoritmos depende do tamanho do conjunto de dados, da estabilidade, do espaço disponível e do desempenho desejado. O BubbleSort é o menos eficiente, o MergeSort é altamente eficiente em grandes conjuntos de dados, e o ShellSort é uma escolha intermediária que pode ser eficaz em muitos cenários. Em resumo, a escolha do algoritmo de ordenação deve ser baseada nas características específicas do problema que você está enfrentando. É importante considerar o tamanho do conjunto de dados, a estabilidade, o espaço disponível e o desempenho desejado ao selecionar o algoritmo apropriado. Cada algoritmo tem suas próprias vantagens e desvantagens, e a escolha correta pode fazer uma grande diferença no desempenho de um programa ou sistema.
+\end{document}
