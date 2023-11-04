@@ -1,0 +1,110 @@
+import java.util.Random;
+
+public class MergeSort {
+
+    static int trocas = 0;
+    static int iteracao = 0;
+
+    public static int tamanhoArray(int[] array) {
+        int tamanho = 0;
+        for (int elemento : array) {
+            tamanho++;
+        }
+        return tamanho;
+    }
+
+    public static void merge(int[] esquerda, int[] direita, int[] array) {
+        int tamanhoEsquerda = tamanhoArray(esquerda);
+        int tamanhoDireita = tamanhoArray(direita);
+        int i = 0, j = 0, k = 0;
+
+        while (i < tamanhoEsquerda && j < tamanhoDireita) {
+            if (esquerda[i] < direita[j]) {
+                array[k++] = esquerda[i++];
+            } else {
+                array[k++] = direita[j++];
+            }
+            trocas++;
+        }
+
+        while (i < tamanhoEsquerda) {
+            array[k++] = esquerda[i++];
+        }
+
+        while (j < tamanhoDireita) {
+            array[k++] = direita[j++];
+        }
+    }
+
+    public static void mergeSort(int[] array) {
+        int tamanho = tamanhoArray(array);
+        if (tamanho > 1) {
+            int meio = tamanho / 2;
+            int[] esquerda = new int[meio];
+            int[] direita = new int[tamanho - meio];
+
+            for (int i = 0; i < meio; i++) {
+                esquerda[i] = array[i];
+            }
+
+            for (int i = meio; i < tamanho; i++) {
+                direita[i - meio] = array[i];
+            }
+
+            mergeSort(esquerda);
+            mergeSort(direita);
+
+            int i = 0, j = 0, k = 0;
+
+            while (i < tamanhoArray(esquerda) && j < tamanhoArray(direita)) {
+                if (esquerda[i] < direita[j]) {
+                    array[k++] = esquerda[i++];
+                } else {
+                    array[k++] = direita[j++];
+                }
+                trocas++;
+            }
+
+            while (i < tamanhoArray(esquerda)) {
+                array[k++] = esquerda[i++];
+            }
+
+            while (j < tamanhoArray(direita)) {
+                array[k++] = direita[j++];
+            }
+            iteracao++;
+        }
+    }
+
+    public static void main(String[] args) {
+        int tamanho = 50;
+        int[] array = new int[tamanho];
+        Random rand = new Random();
+
+        for (int i = 0; i < tamanho; i++) {
+            array[i] = rand.nextInt(100);
+        }
+
+        long tempoInicio, tempoFim;
+
+        tempoInicio = System.currentTimeMillis();
+        mergeSort(array);
+        tempoFim = System.currentTimeMillis();
+
+        double tempoExecucao = tempoFim - tempoInicio;
+
+        System.out.println("Array não ordenado:");
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+
+        System.out.println("\nArray ordenado:");
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+
+        System.out.println("\nTempo de execução: " + tempoExecucao + " milissegundos");
+        System.out.println("Número de Comparações: " + trocas);
+        System.out.println("Número de Iterações: " + iteracao);
+    }
+}
